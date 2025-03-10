@@ -1,0 +1,51 @@
+# Environment variables
+.env
+
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# IDE specific files
+.idea/
+*.iml
+modules.xml
+profiles_settings.xml
+vcs.xml
+workspace.xml
+.vscode/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Configuration that might contain sensitive data
+config/secrets.py
+
+# Local development settings
+*.local.py
+
+# Temporary files
+*.tmp
+
+# Database files (if applicable)
+*.db
+*.sqlite3
+
+# Dependencies
+pip-log.txt
