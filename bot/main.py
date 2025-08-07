@@ -5,16 +5,22 @@ Entry point for the Twitch AI Chatbot
 import asyncio
 import logging
 from bot.twitch_bot import TwitchBot
-from config.settings import BOT_USERNAME, OAUTH_TOKEN, CHANNELS
-from utils.logger import setup_logger
+from config.settings import get_settings
+from utils.logger import get_logger
 
 
+# noinspection PyPep8Naming
 async def main():
     """Main entry point for the bot"""
     # Setup logging
-    setup_logger()
+    get_logger()
     logger = logging.getLogger(__name__)
     logger.info("Starting Twitch AI Chatbot...")
+
+    settings = get_settings()
+    BOT_USERNAME = settings["BOT_USERNAME"]
+    OAUTH_TOKEN = settings["TWITCH_OAUTH_TOKEN"]
+    CHANNELS = settings["BOT_CHANNELS"]
 
     # Initialize bot
     bot = TwitchBot(BOT_USERNAME, OAUTH_TOKEN, CHANNELS)

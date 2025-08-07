@@ -9,7 +9,7 @@ from typing import Optional, List, Dict
 from models.chat_message import ChatMessage
 from models.context_window import ContextWindow
 from services.ai_service import AIService
-from config.emotes import GLOBAL_EMOTES, COMMON_EMOTES
+from config.emotes import get_emotes
 
 
 class ResponseGenerator:
@@ -119,9 +119,11 @@ class ResponseGenerator:
             response = response[:497] + "..."
 
         # Maybe add some Twitch emotes if not already present
-        if random.random() < 0.3 and not any(emote in response for emote in GLOBAL_EMOTES + COMMON_EMOTES):
-            # Add a random emote at the end
-            emote = random.choice(GLOBAL_EMOTES + COMMON_EMOTES)
-            response = f"{response} {emote}"
+        emotes = get_emotes()  # Fetch emotes dynamically
+        all_emotes = list(emotes.get("all", []))  # Get all available emotes
 
+        if random.random() < 0.3 and not any(emote in response for emote in all_emotes) and all_emotes:
+        # Add a random emote at the end
+            emote = random.choice(all_emotes)
+            response = f"{response} {emote}"
         return response

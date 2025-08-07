@@ -20,7 +20,7 @@ build/
 logs/
 
 # IDE specific files
-.idea/
+.idea
 *.iml
 modules.xml
 profiles_settings.xml

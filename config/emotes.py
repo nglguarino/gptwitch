@@ -3,9 +3,8 @@ Emote configuration and lookup for the Twitch AI Bot.
 Includes standard Twitch emotes, BTTV, FFZ, and 7TV emotes.
 """
 
-import json
-import os
 import requests
+from json import load, dump
 from typing import Dict, List, Set, Optional, Any
 from pathlib import Path
 import time
@@ -84,7 +83,7 @@ def _load_emotes() -> None:
     if cache_file.exists():
         try:
             with open(cache_file, 'r', encoding='utf-8') as f:
-                cached_data = json.load(f)
+                cached_data = load(f)
                 emotes = cached_data.get("emotes", {})
 
                 # Convert category lists back to sets
@@ -126,7 +125,7 @@ def _load_emotes() -> None:
         }
 
         with open(cache_file, 'w', encoding='utf-8') as f:
-            json.dump({
+            dump({
                 "emotes": emotes,
                 "categories": serializable_categories,
                 "last_updated": _emote_cache["last_updated"]
@@ -258,7 +257,7 @@ def _fetch_twitch_emotes(emotes: Dict[str, Any], categories: Dict[str, Set[str]]
         fallback_file = Path("config/static/twitch_emotes.json")
         if fallback_file.exists():
             with open(fallback_file, 'r', encoding='utf-8') as f:
-                twitch_emotes_data = json.load(f)
+                twitch_emotes_data = load(f)
 
                 for emote_data in twitch_emotes_data.get("data", []):
                     code = emote_data.get("name")
@@ -332,7 +331,7 @@ def _fetch_bttv_emotes(emotes: Dict[str, Any], categories: Dict[str, Set[str]]) 
             fallback_file = Path("config/static/bttv_emotes.json")
             if fallback_file.exists():
                 with open(fallback_file, 'r', encoding='utf-8') as f:
-                    bttv_emotes_data = json.load(f)
+                    bttv_emotes_data = load(f)
 
                     for emote_data in bttv_emotes_data:
                         code = emote_data.get("code")
@@ -406,7 +405,7 @@ def _fetch_ffz_emotes(emotes: Dict[str, Any], categories: Dict[str, Set[str]]) -
             fallback_file = Path("config/static/ffz_emotes.json")
             if fallback_file.exists():
                 with open(fallback_file, 'r', encoding='utf-8') as f:
-                    ffz_data = json.load(f)
+                    ffz_data = load(f)
 
                     # Process FFZ data
                     for set_id in ffz_data.get("default_sets", []):
@@ -480,7 +479,7 @@ def _fetch_7tv_emotes(emotes: Dict[str, Any], categories: Dict[str, Set[str]]) -
             fallback_file = Path("config/static/7tv_emotes.json")
             if fallback_file.exists():
                 with open(fallback_file, 'r', encoding='utf-8') as f:
-                    seventv_emotes_data = json.load(f)
+                    seventv_emotes_data = load(f)
 
                     for emote_data in seventv_emotes_data:
                         code = emote_data.get("name")

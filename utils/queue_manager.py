@@ -1,7 +1,7 @@
 import asyncio
 import time
 from typing import Any, Callable, Coroutine, Dict, List, Optional, Union
-from .logger import get_logger
+from utils.logger import get_logger
 
 logger = get_logger()
 

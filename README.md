@@ -1,6 +1,6 @@
 # GPTwitch Bot
 
-A Twitch chatbot powered by AI that interacts with viewers and enhances stream engagement.
+A Twitch chatbot powered by AI that interacts with viewers and enhances stream engagement (in progress).
 
 ## Overview
 
@@ -113,14 +113,6 @@ def my_custom_command(message, args):
 
 Modify the prompt templates in `services/ai_service.py` to adjust the bot's personality and response style.
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
-
 ## License
 
 MIT License - See LICENSE file for details.
@@ -128,4 +120,4 @@ MIT License - See LICENSE file for details.
 ## Acknowledgements
 
 - [Twitch API](https://dev.twitch.tv/docs/api/)
-- [OpenAI API](https://platform.openai.com/docs/api-reference) (or other AI service you're using)
+- [OpenAI API](https://platform.openai.com/docs/api-reference)
